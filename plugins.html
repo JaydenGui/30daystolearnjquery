@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery - plugins</title>
+</head>
+<body>
+<h1>My Tweets</h1>
+<ul class="tweets"></div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="queryTwitter.js" type="text/javascript"></script>
+<script>
+	$('ul.tweets').queryTwitter({
+		search: 'Justin Timberlake',
+		limit: 5,
+		onComplete: function(){
+			console.log(arguments);
+		},
+		refresh: 4000
+		// transition: 
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery</title>
+	<link rel="stylesheet" href="day.css">
+</head>
+<body>
+	<div class="container">         
+		<h1>Welcome to my Website</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea facilis minus recusandae obcaecati quas atque at distinctio quibusdam esse nam deleniti molestias earum magnam rerum hic officia dolorem quisquam saepe?</p>
+		<button data-file="day">Day</button>
+		<button data-file="night">Night</button>
+		<script src="jquery.js" type="text/javascript"></script>
+		<script>
+		(function () {
+			var link = $('link');
+			$('button').on('click', function(){
+				var $this = $(this),
+				     stylesheet = $this.data('file');
+
+				link.attr('href', stylesheet + '.css');
+
+				$this
+					.siblings('button')   
+					.removeAttr('disabled')
+					.end()
+					.attr('disabled', 'disabled');
+			
+			});
+		})();
+		</script>
+	</div>
+</body>
+</html>

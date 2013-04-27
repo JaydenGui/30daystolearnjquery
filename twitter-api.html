@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<title>Twitter API</title>
+	<style>
+		ul{list-style: none;}
+		li{padding-bottom: 1em;}
+		img{float: left; margin-right: 1em; display: block;}
+		a{text-decoration: none; color:#333;}
+	</style>
+</head>
+<body>
+	<h1>Twitter Feed</h1>
+	<ul class="tweets">
+		<script id="tweets-template" type="text/x-handlebars-template">
+			{{#each this}}
+			<li>
+				<img src="{{thumb}}" alt="{{author}}" />
+				<p><a href="{{url}}">{{tweet}}</a></p>
+			</li>
+			{{/each}}
+		</script>
+	</ul>
+<script src="jquery.js" type="text/javascript"></script>
+<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.min.js" type="text/javascript"></script>
+<script>
+(function() {
+	// Create an object literal
+
+	var Twitter = {
+		// Create our init method to get things started
+		init: function( config ){
+			// this refers to the obj literal in this case Twitter
+			// Next we want to set some properties, ex the URL
+			// We pass config to our init method so we're not dependent on the DOM
+			this.url = 'https://search.twitter.com/search.json?q=' + config.query + '&callback=?';
+			this.template = config.template;
+			this.container = config.container;
+			this.fetch();
+		},
+
+		// Create another method for attaching a template
+
+		attachTemplate: function(){
+			var template = Handlebars.compile(this.template);
+			this.container.append(template( this.tweets ));
+
+		},
+
+		// Create another method for fetching, because each method should be responsible for one thing
+		fetch: function(){
+			var self = this; // This is so we can refer this to the Twitter object
+			// We're using the jQuery obj getJson to fetch the Twitter json feed and create a callback function that is passed the data from the json feed
+			$.getJSON( this.url, function( data ){
+
+				// We need to filter the json results and map those results into a new array, each object is represented by tweet
+				self.tweets = $.map(data.results, function ( tweet ){
+					// We need to return a subset ofthe results of our filter, so we created a return obj
+					return{
+						// Create our properties to store our filtered results
+						author: tweet.from_user,
+						tweet: tweet.text,
+						thumb: tweet.profile_image_url,
+						url: 'http://twitter.com/' + tweet.from_user + '/status/' + tweet.id_str
+					};
+				});
+
+				// Now we need to take our data and attach it to a template, but there's a better way to do this using defferds.
+				self.attachTemplate();
+			});
+			
+		}
+	};
+
+	Twitter.init({
+		template: $('#tweets-template').html(),
+		container: $('ul.tweets'),
+		query: 'tutspremium'
+	});
+
+})(); 
+
+</script>
+</body>
+</html>

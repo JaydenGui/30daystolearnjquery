@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Events 201</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">         
+		<a href="http://tutsplus.com">Click Me</a>
+		
+		<script src="jquery.js" type="text/javascript"></script>
+		<script>
+
+		var obj = {
+			doIt: function(e){
+				console.log(this);
+				e.preventDefault();
+			}
+		}
+
+		$('a').on('click', $.proxy(obj.doIt, obj) );
+
+			// $('a').on('click', function(e){
+			// 	obj.doIt.call(this);
+			// 	e.preventDefault();
+			// });
+		</script>
+	</div>
+</body>
+</html>

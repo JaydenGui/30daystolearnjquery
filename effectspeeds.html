@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Events 201</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">         
+		<h1>My Reveal</h1>
+		<div class="content">
+			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+			<p>
+				<a href="http://tutsplus.com">Click Me</a>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quo pariatur culpa officia hic deserunt dolores quibusdam dolorem error veritatis sequi laudantium odio suscipit quis aperiam sed odit nostrum illum?
+			</p>
+		</div>
+		
+		<script src="jquery.js" type="text/javascript"></script>
+		<script>
+			var content = $('div.content').hide();
+			
+			jQuery.fn.flash = function( speed, easing, callback){
+				var $this = $(this);
+				 return $this.slideDown(1000, function(){
+					$this.delay(2000).slideUp(500);
+				});
+			}
+
+			$('h1').on('click', function(){
+				content.flash();
+			})
+		</script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Events 201</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">         
+		<div class="box">
+			<h2>Need more help</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium voluptatibus iusto beatae illo veritatis expedita. Quia placeat vero quae voluptate tempora repellendus vitae sed. Quaerat quia at ipsum qui non?</p>
+		</div>
+		<p><button>Got it!</button></p>
+		
+		<script src="jquery.js" type="text/javascript"></script>
+		<script>
+			(function() {
+				var box = $('div.box');
+
+				$.fn.fadeSlideToggle = function(speed, fn){
+					// Always return the jQuery object from your custom methods or plugins to allow for chaining.
+					return $(this).animate({
+						height:'toggle',
+						opacity:'toggle'
+					}, speed, fn);
+				};
+
+				$('button').on('click', function(){
+					box.fadeSlideToggle(2000, function(){
+						console.log('complete');
+					});
+				});
+			})(); 
+		</script>
+	</div>
+</body>
+</html>

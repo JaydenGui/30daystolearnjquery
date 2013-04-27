@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Events 201</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">         
+		<h1>Frequently Asked Questions</h1>
+		<dl>
+			<dt>What are your hours?</dt>
+			<dd>We are open 24/7.</dd>
+			<dt>What are your hours?</dt>
+			<dd>We are open 24/7.</dd>
+			<dt>What are your hours?</dt>
+			<dd>We are open 24/7.</dd>
+			<dt>What are your hours?</dt>
+			<dd>We are open 24/7.</dd>
+			<dt>What are your hours?</dt>
+			<dd>We are open 24/7.</dd>
+		</dl>
+		
+		<script src="jquery.js" type="text/javascript"></script>
+		<script>
+			(function() {
+				$('dd').filter(':nth-child(n+4)').addClass('is-hidden');
+				$('dl').on('mouseenter', 'dt', function(){
+					$(this)
+						.next()
+							.slideDown()
+							.siblings('dd')
+								.slideUp();
+				});
+			})(); 
+		</script>
+	</div>
+</body>
+</html>

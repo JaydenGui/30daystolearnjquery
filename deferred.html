@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Deferreds</title>
+	<style>
+		.box{
+			width: 200px;
+			height:200px;
+			background: #ddd;
+			display: inline-block;
+			margin-right: 3em;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="box">My Box</div>
+	<div class="box">My Box</div>
+	<div class="box">My Box</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script>
+		function getTweets( search ){
+			return $.ajax({
+							url: 'http://search.twitter.com/search.json',
+							data: { q: search },
+							dataType: 'jsonp'
+						});
+		}
+
+		$.when( getTweets('dogs'), getTweets('cats')).done(function(results1, results2){
+			console.log(results1);
+			console.log(results2);
+		});
+
+
+	// // We want to animate the boxes and use deferred to fire off callbacks after the animation
+	// $('div.box').each(function(i){
+	// 	$(this).delay( 1000 * i++ ).fadeOut(1000);
+	// }).promise().done(function(){
+	// 	alert('All animations are completed!');
+	// });
+
+		// $.searchTwitter = function(search){
+		// 	// The new way is to create a deferred
+		// 	var dfd = new $.Deferred();
+		// 	// instead we can use return on the jQuery ajax call because those ajax methods should already use deferred with success and error properties built in
+		// 	return $.ajax({
+		// 		url: 'http://search.twitter.com/search.json',
+		// 		data: {q: search},
+		// 		dataType: 'jsonp'
+		// 		// success: dfd.resolve
+		// 		// success: function(results){
+		// 		// 	console.log(results);
+		// 		// } This is the old way and limits access to the success
+		// 	}).promise();
+
+		// 	// return dfd.promise();
+		// };
+
+		// $.searchTwitter('cats').then(function(results){
+		// 	console.log(results);
+		// });
+	</script>
+</body>
+</html>

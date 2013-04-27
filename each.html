@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<title>Each and templating</title>
+</head>
+<body>
+	<script id="blogTemplate" type="gratay/template">
+		<h2>{{title}}</h2>
+		<img src="{{thumbnail}}" alt="{{title}}" />
+	</script>
+<script src="jquery.js" type="text/javascript"></script>
+<script>
+
+(function() {
+	var content = [
+		{
+			title: 'My awesome blog post',
+			thumbnail: 'http://placehold.it/200x200'
+		},
+		{
+			title: 'My second awesome blog post',
+			thumbnail: 'http://placehold.it/200x200'
+		}
+	],
+
+		template = $.trim ( $('#blogTemplate').html() ),
+		frag = '';
+		
+		$.each( content, function( index, obj ){
+		frag +=	template.replace( /{{title}}/ig, obj.title )
+					.replace( /{{thumbnail}}/ig, obj.thumbnail );
+		$(document.body).append(frag);
+		})
+})(); 
+
+</script>
+</body>
+</html>

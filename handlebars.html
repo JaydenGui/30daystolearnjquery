@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<title>Handelbars templating</title>
+</head>
+<body>
+	<ul class="tweets">
+		<script id="template" type="text/x-handlebars-template">
+		{{#each this}}
+			<li>
+				<h2>{{author}}{{#if age}} - <span>{{age}}</span>{{/if}}</h2>
+				<p>{{tweet}}</p>
+			</li>
+		{{/each}}
+		</script>
+	</ul>
+	
+<script src="jquery.js" type="text/javascript"></script>
+<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.min.js" type="text/javascript"></script>
+<script>
+(function() {
+	var data = [
+		{
+			author: 'Jonri Rothwell',
+			tweet: '30 Days to Learn jQuery rocks!',
+			age: 38
+		},
+		{
+			author: 'Nikia Reid',
+			tweet: '30 Days to Learn jQuery rocks!',
+			// age: 36
+		}
+	];
+
+	var template = Handlebars.compile($('#template').html() );
+	var temp = template(data);
+	$('ul.tweets').append(temp);
+
+})(); 
+
+</script>
+</body>
+</html>

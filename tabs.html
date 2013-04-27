@@ -1,0 +1,103 @@
+<!doctype HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Custom tabs plugin</title>
+	<style type="text/css" media="screen">
+		body{
+			width: 600px;
+			margin: 100px auto 0;
+			font-family: helvetica, arial;
+			line-height: 1.5em;
+			color:#434343;
+		}
+		h1{
+			color: #a81f1f;
+		}
+		h1 small{
+			color: #292929;
+			font-size: .6em;
+			position: relative;
+			top: -3px;
+		}
+		#tab-container{
+			float: left;
+		}
+		#tab-container div{
+			width: 600px;
+			padding: 2em;
+			position: relative;
+			background: #e1e1e1;
+		}
+		ul#tab-items{
+			margin: 0;
+			padding: 0;
+			background: #fff;
+			width: 100%;
+			overflow: hidden;
+		}
+		#tab-items li{
+			float: left;
+			list-style: none;
+			margin-right: .5em;
+		}
+		ul#tab-items li.tab-selected a, ul#tab-items li:hover a{
+			background: #e1e1e1;
+			position: relative;
+			cursor: pointer;
+			z-index: 101;
+		}
+
+		#tab-items a{
+			padding: .25em 1.3em;
+			background: #c8c8c8;
+			display: block;
+			outline: none;
+			text-decoration: none;
+			color: #363636;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+		}
+	</style>
+</head>
+<body>
+	<h1>fmTabs: <small>super simple</small></h1>
+	<div id="tab-container">
+		<div>
+			<h2>First tab</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div>
+			<h2>Second tab</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<div>
+			<h2>Third tab</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="fmTabs.js"></script>
+	<script>
+		$('div#tab-container').fmTabs({
+			fade: 200,
+			interval: 5000
+		});
+	</script>
+</body>
+</html>

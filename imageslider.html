@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Events 201</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">        
+		<div class="slider">
+			<ul>
+				<li><img src="http://placehold.it/600x300&text=image1" alt="image" width="600" /></li>
+				<li><img src="http://placehold.it/600x300&text=image2" alt="image" /></li>
+				<li><img src="http://placehold.it/600x300&text=image3" alt="image" /></li>
+				<li><img src="http://placehold.it/600x300&text=image4" alt="image" /></li>
+			</ul>
+		</div>
+		<div id="slider-nav">
+			<button data-dir="prev">Previous</button>
+			<button data-dir="next">Next</button>
+		</div>
+		<script src="jquery.js" type="text/javascript"></script>
+		<script src="slider2.js" type="text/javascript"></script>
+		<script>
+			(function() {
+				var container = $('div.slider').css('overflow', 'hidden').children('ul');
+				var slider = new Slider ( container, $('#slider-nav') );
+				slider.nav
+					slider.setPos( $(this).data('dir') );
+					slider.transition();
+				});
+			})(); 
+			
+		</script>
+	</div>
+</body>
+</html>

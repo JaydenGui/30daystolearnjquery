@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Events 201</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">         
+		<div class="box">
+			<h2>Need more help</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium voluptatibus iusto beatae illo veritatis expedita. Quia placeat vero quae voluptate tempora repellendus vitae sed. Quaerat quia at ipsum qui non?</p>
+		</div>
+		<p><button>Center</button></p>
+		
+		<script src="jquery.js" type="text/javascript"></script>
+		<script>
+			(function() {
+				var box = $('div.box'),
+					w = $('div.container').width() / 2 - box.outerWidth() / 2
+					h = $('div.container').height() / 2 - box.outerHeight() / 2;
+
+				console.log(w);
+
+				$('button').on('click', function(){
+					// box
+					// 	.animate({
+					// 		'fontSize': '+=5'
+					// 	}, {duration: 500})
+					// 	.animate({'top': 500}, 3000);
+					box
+						.animate({
+							'left': w
+					}, {duration: 500})
+						.animate({'top': h}, 1000);
+				});
+			})(); 
+		</script>
+	</div>
+</body>
+</html>

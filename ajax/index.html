@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>30 Days to learn jQuery - Load Pages Asynchronously</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">         
+		<h1>Welcome to my local server</h1>
+		<ul class="nav">
+			<li><a href="about.html">About me</a></li>
+			<li><a href="contact.html">Contact me</a></li>
+			<li><a href=""></a></li>
+		</ul>
+		<div class="content"></div>
+	</div>
+	
+	<script src="jquery.js" type="text/javascript"></script>
+		<script>
+		(function() {
+			var content = $('div.content')
+			$('a').on('click', function(e){
+				var href = $(this).attr('href');
+				content.load( href + ' .container');
+				e.preventDefault();
+			})
+		})(); 
+		</script>
+</body>
+</html>
